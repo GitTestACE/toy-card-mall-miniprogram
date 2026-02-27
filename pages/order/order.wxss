@@ -1,0 +1,18 @@
+/* pages/order/order.wxss */
+.order-container { min-height: 100vh; background: #f5f5f5; padding: 20rpx; padding-bottom: 120rpx; }
+.order-list { display: flex; flex-direction: column; gap: 20rpx; }
+.order-item { background: #fff; border-radius: 16rpx; overflow: hidden; }
+.order-header { display: flex; justify-content: space-between; align-items: center; padding: 20rpx; border-bottom: 2rpx solid #f5f5f5; }
+.order-id { font-size: 26rpx; color: #666; }
+.order-status { font-size: 24rpx; padding: 6rpx 16rpx; border-radius: 20rpx; }
+.order-status.pending { background: #fff3e0; color: #ff9800; }
+.order-status.completed { background: #e8f5e9; color: #4caf50; }
+.order-items { padding: 20rpx; }
+.order-goods { padding: 10rpx 0; font-size: 26rpx; color: #333; }
+.order-footer { padding: 20rpx; border-top: 2rpx solid #f5f5f5; display: flex; flex-direction: column; align-items: flex-end; gap: 12rpx; }
+.total-price { font-size: 30rpx; font-weight: bold; color: #ff6b6b; }
+.confirm-btn { background: #ff6b6b; color: #fff; font-size: 26rpx; padding: 12rpx 32rpx; border-radius: 30rpx; margin: 0; }
+.empty { text-align: center; padding: 200rpx; color: #999; }
+.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 100rpx; background: #fff; display: flex; border-top: 2rpx solid #eee; }
+.tab-item { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 26rpx; color: #999; }
+.tab-item.active { color: #ff6b6b; font-weight: bold; }

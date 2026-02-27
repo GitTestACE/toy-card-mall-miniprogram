@@ -1,0 +1,78 @@
+/* pages/cart/cart.wxss */
+.cart-container { min-height: 100vh; background: #f5f5f5; padding-bottom: 220rpx; }
+
+.cart-list { padding: 20rpx; }
+
+.cart-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.cart-img { width: 140rpx; height: 140rpx; border-radius: 12rpx; flex-shrink: 0; }
+
+.cart-info { flex: 1; }
+
+.cart-name { font-size: 28rpx; font-weight: bold; color: #333; }
+
+.cart-price { font-size: 26rpx; color: #ff6b6b; margin-top: 8rpx; }
+
+.cart-subtotal { font-size: 24rpx; color: #999; margin-top: 8rpx; }
+
+.cart-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 16rpx; }
+
+.num-controls { display: flex; align-items: center; border: 2rpx solid #ddd; border-radius: 8rpx; }
+
+.num-btn { width: 50rpx; height: 50rpx; display: flex; align-items: center; justify-content: center; font-size: 32rpx; color: #666; background: #f5f5f5; }
+
+.num { width: 60rpx; text-align: center; font-size: 28rpx; }
+
+.delete-btn { font-size: 24rpx; color: #999; padding: 8rpx 16rpx; }
+
+.empty { text-align: center; padding: 200rpx 40rpx; color: #999; font-size: 28rpx; }
+
+.checkout-bar {
+  position: fixed;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.total-info { font-size: 28rpx; }
+
+.total-price { color: #ff6b6b; font-size: 36rpx; font-weight: bold; }
+
+.checkout-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  color: #fff;
+  padding: 20rpx 60rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  border-top: 2rpx solid #eee;
+}
+
+.tab-item { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 26rpx; color: #999; }
+
+.tab-item.active { color: #ff6b6b; font-weight: bold; }

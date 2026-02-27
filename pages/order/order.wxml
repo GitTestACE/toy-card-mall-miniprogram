@@ -1,0 +1,26 @@
+<!-- pages/order/order.wxml -->
+<view class="order-container">
+  <view class="order-list" wx:if="{{orderList.length > 0}}">
+    <view class="order-item" wx:for="{{orderList}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-id">订单 #{{item.id}}</text>
+        <text class="order-status {{item.status}}">{{item.status === 'pending' ? '待收货' : '已完成'}}</text>
+      </view>
+      <view class="order-items">
+        <view class="order-goods" wx:for="{{item.items}}" wx:for-item="goods" wx:key="index">
+          <text class="goods-name">{{goods.goodsName}} × {{goods.num}}</text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <view class="total-price">合计: {{item.totalPrice}} 积分</view>
+        <button wx:if="{{item.status === 'pending'}}" class="confirm-btn" bindtap="onConfirmReceive" data-id="{{item.id}}">确认收货</button>
+      </view>
+    </view>
+  </view>
+  <view class="empty" wx:else><text>📦 暂无订单记录~</text></view>
+  <view class="tab-bar">
+    <view class="tab-item" bindtap="goIndex">首页</view>
+    <view class="tab-item" bindtap="goCart">购物车</view>
+    <view class="tab-item active">我的</view>
+  </view>
+</view>

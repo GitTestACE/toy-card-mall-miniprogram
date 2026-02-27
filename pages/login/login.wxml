@@ -1,0 +1,26 @@
+<!-- pages/login/login.wxml -->
+<view class="login-container">
+  <view class="logo">🧸</view>
+  <view class="title">玩具卡片商城</view>
+  
+  <view class="form">
+    <input class="input" placeholder="请输入昵称" bindinput="onNicknameInput" />
+    
+    <view class="avatar-section">
+      <view class="label">选择头像</view>
+      <view class="avatars">
+        <view 
+          wx:for="{{avatars}}" 
+          wx:key="index" 
+          class="avatar-item {{selectedAvatar === index ? 'selected' : ''}}"
+          bindtap="onSelectAvatar"
+          data-index="{{index}}"
+        >
+          <image src="{{item}}" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+    
+    <button class="btn" bindtap="onLogin">立即登录</button>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<!-- pages/cart/cart.wxml -->
+<view class="cart-container">
+  <view class="cart-list" wx:if="{{cartList.length > 0}}">
+    <view class="cart-item" wx:for="{{cartList}}" wx:key="id">
+      <image class="cart-img" src="{{item.imgUrl}}" mode="aspectFill" />
+      <view class="cart-info">
+        <view class="cart-name">{{item.name}}</view>
+        <view class="cart-price">{{item.price}} 积分</view>
+        <view class="cart-subtotal">小计: {{item.price * item.num}} 积分</view>
+      </view>
+      <view class="cart-actions">
+        <view class="num-controls">
+          <view class="num-btn" bindtap="onDecrease" data-id="{{item.id}}" data-num="{{item.num}}">-</view>
+          <view class="num">{{item.num}}</view>
+          <view class="num-btn" bindtap="onIncrease" data-id="{{item.id}}" data-num="{{item.num}}">+</view>
+        </view>
+        <view class="delete-btn" bindtap="onDelete" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text>🛒 购物车空空的，快去逛逛吧~</text>
+  </view>
+
+  <view class="checkout-bar" wx:if="{{cartList.length > 0}}">
+    <view class="total-info">
+      <text>合计: </text>
+      <text class="total-price">{{totalPrice}} 积分</text>
+    </view>
+    <view class="checkout-btn" bindtap="onCheckout">结算</view>
+  </view>
+
+  <view class="tab-bar">
+    <view class="tab-item" bindtap="goIndex">首页</view>
+    <view class="tab-item active">购物车</view>
+    <view class="tab-item" bindtap="goUser">我的</view>
+  </view>
+</view>
