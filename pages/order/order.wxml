@@ -9,6 +9,7 @@
       <view class="order-items">
         <view class="order-goods" wx:for="{{item.items}}" wx:for-item="goods" wx:key="index">
           <text class="goods-name">{{goods.goodsName}} × {{goods.num}}</text>
+          <text class="ship-status {{(goods.shippedNum || 0) >= goods.num ? 'all' : ''}}">已发货: {{goods.shippedNum || 0}}/{{goods.num}}</text>
         </view>
       </view>
       <view class="order-footer">

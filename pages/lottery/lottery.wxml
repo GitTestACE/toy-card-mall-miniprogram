@@ -1,0 +1,83 @@
+<!-- pages/lottery/lottery.wxml -->
+<view class="lottery-container">
+  <!-- 头部信息 -->
+  <view class="header">
+    <view class="activity-title">{{activity.title}}</view>
+    <view class="activity-desc">{{activity.description}}</view>
+    <view class="user-info">
+      <view class="info-item">
+        <text class="label">剩余抽奖次数</text>
+        <text class="value">{{remainingTimes}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">我的积分</text>
+        <text class="value">{{userPoints}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 抽奖转盘区域 -->
+  <view class="wheel-container">
+    <view class="wheel" style="transform: rotate({{rotateAngle}}deg)">
+      <view 
+        class="prize-item" 
+        wx:for="{{prizeList}}" 
+        wx:key="index"
+        style="transform: rotate({{item.angle}}deg)"
+      >
+        <image class="prize-image" src="{{item.image}}" mode="aspectFit" />
+        <text class="prize-name">{{item.name}}</text>
+      </view>
+    </view>
+    <view class="pointer" bindtap="startDraw">
+      <text class="pointer-text">{{isDrawing ? '抽奖中...' : '开始抽奖'}}</text>
+    </view>
+  </view>
+
+  <!-- 奖品列表 -->
+  <view class="prize-list">
+    <view class="section-title">🎁 奖品列表</view>
+    <scroll-view scroll-x="true" class="prize-scroll">
+      <view class="prize-cards">
+        <view class="prize-card" wx:for="{{prizeList}}" wx:key="index">
+          <image class="card-image" src="{{item.image}}" mode="aspectFit" />
+          <view class="card-name">{{item.name}}</view>
+          <view class="card-points">{{item.points}} 积分</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 抽奖记录 -->
+  <view class="records-section">
+    <view class="section-title">📋 我的抽奖记录</view>
+    <view class="records-list" wx:if="{{records.length > 0}}">
+      <view class="record-item" wx:for="{{records}}" wx:key="index">
+        <view class="record-prize">{{item.prizeName}}</view>
+        <view class="record-time">{{item.createTime}}</view>
+      </view>
+    </view>
+    <view class="no-records" wx:else>
+      <text>暂无抽奖记录</text>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <view class="tab-item" bindtap="goIndex">首页</view>
+    <view class="tab-item" bindtap="goCart">购物车</view>
+    <view class="tab-item" bindtap="goUser">我的</view>
+  </view>
+
+  <!-- 抽奖结果弹窗 -->
+  <view class="modal-mask" wx:if="{{showResultModal}}" bindtap="closeModal"></view>
+  <view class="result-modal" wx:if="{{showResultModal}}">
+    <view class="modal-content">
+      <view class="modal-title">🎉 恭喜获得</view>
+      <image class="result-image" src="{{resultPrize.image}}" mode="aspectFit" />
+      <view class="result-name">{{resultPrize.name}}</view>
+      <view class="result-points">消耗 {{resultPrize.points}} 积分</view>
+      <button class="confirm-btn" bindtap="closeModal">我知道了</button>
+    </view>
+  </view>
+</view>

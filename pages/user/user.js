@@ -16,6 +16,8 @@ Page({
 
   goOrder() { wx.navigateTo({ url: '/pages/order/order' }) },
 
+  goLottery() { wx.navigateTo({ url: '/pages/lottery/lottery' }) },
+
   onRefreshPoints() {
     wx.request({
       url: `${app.globalData.baseUrl}/api/user/info?userId=${app.globalData.userId}`,

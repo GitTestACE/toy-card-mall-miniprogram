@@ -1,5 +1,15 @@
 <!-- pages/index/index.wxml -->
 <view class="index-container">
+  <!-- 抽奖入口 -->
+  <view class="lottery-banner" bindtap="goLottery">
+    <view class="lottery-icon">🎰</view>
+    <view class="lottery-info">
+      <view class="lottery-title">积分抽奖</view>
+      <view class="lottery-desc">10积分抽好礼</view>
+    </view>
+    <view class="lottery-btn">立即参与</view>
+  </view>
+
   <!-- 热门商品 -->
   <view class="section" wx:if="{{hotGoods.length > 0}}">
     <view class="section-title">🔥 热门商品</view>

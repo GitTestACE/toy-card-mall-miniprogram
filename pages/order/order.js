@@ -14,12 +14,34 @@ Page({
   loadOrders() {
     wx.request({
       url: `${app.globalData.baseUrl}/api/order/list?userId=${app.globalData.userId}`,
-      success: (res) => { if (res.data.code === 200) { this.setData({ orderList: res.data.data }) } }
+      success: (res) => { 
+        if (res.data.code === 200) { 
+          // 计算每个订单是否可确认收货
+          const orders = res.data.data.map(order => {
+            const allShipped = order.items.every(item => (item.shippedNum || 0) >= item.num)
+            order.canConfirm = allShipped && order.status === 'pending'
+            return order
+          })
+          this.setData({ orderList: orders }) 
+        } 
+      }
     })
   },
 
   onConfirmReceive(e) {
     const orderId = e.currentTarget.dataset.id
+    const order = this.data.orderList.find(o => o.id === orderId)
+    
+    // 检查是否全部发货
+    if (order && !order.canConfirm) {
+      wx.showModal({
+        title: '提示',
+        content: '订单还未全部发货，无法确认收货',
+        showCancel: false
+      })
+      return
+    }
+    
     wx.showModal({
       title: '确认收货',
       content: '确定已收到商品吗？',
@@ -34,6 +56,8 @@ Page({
               if (res.data.code === 200) {
                 wx.showToast({ title: '确认成功', icon: 'success' })
                 this.loadOrders()
+              } else {
+                wx.showToast({ title: res.data.message || '操作失败', icon: 'none' })
               }
             }
           })

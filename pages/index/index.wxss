@@ -5,6 +5,45 @@
   padding-bottom: 120rpx;
 }
 
+/* 抽奖横幅 */
+.lottery-banner {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ff6b6b, #ffa500);
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  color: #fff;
+}
+
+.lottery-icon {
+  font-size: 60rpx;
+  margin-right: 20rpx;
+}
+
+.lottery-info {
+  flex: 1;
+}
+
+.lottery-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.lottery-desc {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.lottery-btn {
+  background: #fff;
+  color: #ff6b6b;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
 .section {
   background: #fff;
   margin-bottom: 20rpx;

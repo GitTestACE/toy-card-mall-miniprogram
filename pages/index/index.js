@@ -72,5 +72,6 @@ Page({
   },
 
   goCart() { wx.navigateTo({ url: '/pages/cart/cart' }) },
-  goUser() { wx.navigateTo({ url: '/pages/user/user' }) }
+  goUser() { wx.navigateTo({ url: '/pages/user/user' }) },
+  goLottery() { wx.navigateTo({ url: '/pages/lottery/lottery' }) }
 })

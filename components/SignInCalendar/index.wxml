@@ -1,0 +1,40 @@
+<!-- components/SignInCalendar/index.wxml -->
+<view class="calendar">
+  <view class="calendar-header">
+    <text class="month">{{currentMonth}}</text>
+    <text class="hint" wx:if="{{makeUpCount > 0}}">可补签 {{makeUpCount}} 次</text>
+  </view>
+
+  <view class="weekdays">
+    <text class="weekday" wx:for="{{weekLabels}}" wx:key="index">{{item}}</text>
+  </view>
+
+  <view class="days-grid">
+    <view 
+      class="day {{item.status}}" 
+      wx:for="{{days}}" 
+      wx:key="index"
+      data-day="{{item.day}}"
+      data-date="{{item.date}}"
+      data-status="{{item.status}}"
+      bindtap="onDayTap">
+      <text class="day-text">{{item.day > 0 ? item.day : ''}}</text>
+      <text class="check-icon" wx:if="{{item.status === 'signed'}}">✓</text>
+    </view>
+  </view>
+
+  <view class="legend">
+    <view class="legend-item">
+      <view class="dot signed"></view>
+      <text>已签到</text>
+    </view>
+    <view class="legend-item">
+      <view class="dot missed"></view>
+      <text>未签到</text>
+    </view>
+    <view class="legend-item">
+      <view class="dot future"></view>
+      <text>未开始</text>
+    </view>
+  </view>
+</view>
